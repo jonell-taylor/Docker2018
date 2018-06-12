@@ -1,25 +1,20 @@
-## Welcome to GitHub Pages
+# MongoDB Repo Overview
+-----
+The files in this repository build the base MongoDB Docker image. 
 
-You can use the [editor on GitHub](https://github.com/jonell-taylor/Docker2018/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+This Docker image is not application specific. The Mongo Base image gives you a base 3.4 MongoDB instance with default configurations. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Prerequisites 
+---
+1. You need to have a Docker Environment to deploy to. 
+2. You need a DTR repo created to push your image 
+3. You will need a RHEL 7.3 base image 
 
-### Markdown
+# DockerFile 
+## Config File 
+### Compose File 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
 
 **Bold** and _Italic_ and `Code` text
 
