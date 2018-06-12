@@ -1,0 +1,30 @@
+FROM rhel:7.2-azure
+MAINTAINER John Doe <john.doe@yourcompany.com>
+
+
+LABEL \
+     com.metlife.docker.author="John.Doe@yourcompany.com>" \
+     com.metlife.docker.maintainer="John Doe<john.doe@yourcompany.com>" \
+     com.metlife.docker.maturity="Lab" \
+     com.metlife.docker.description="Mongo 3.4 image" \
+     com.metlife.docker.official="false" \
+     com.metlife.docker.sourcedfrom="https://repo.mongodb.com/yum/redhat/$releasever/mongodb-enterprise/3.4/$basearch/"
+
+RUN echo $'[mongodb-enterprise] \n\
+name=MongoDB Enterprise Repository \n\
+baseurl=https://repo.mongodb.com/yum/redhat/$releasever/mongodb-enterprise/3.4/$basearch/ \n\
+gpgcheck=1 \n\
+enabled=1 \n\
+gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc' > /etc/yum.repos.d/mongodb-org-3.4.repo
+
+RUN yum install -y mongodb-enterprise && yum clean all
+RUN mkdir -p /run/secrets
+ADD mongod.conf /etc/mongod.conf
+RUN chmod 644 /etc/mongod.conf
+
+
+EXPOSE 27017
+
+
+CMD ["/usr/bin/mongod","--config","/etc/mongod.conf"]
+
